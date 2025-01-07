@@ -20,7 +20,7 @@ let gameInterval;
 
 // Position et vitesse de la voiture
 let car = {
-    x: 400,
+    x: 350,
     y: 300,
     width: 50,
     height: 30,
@@ -28,13 +28,12 @@ let car = {
     angle: 0,
     image: new Image()
 };
+const startLine = { x: 351, y: 301, width: 5, height: 40 }; // Ligne de départ, positionnée plus bas
 
 // Image du circuit
 let trackImage = new Image();
 trackImage.src = 'images/Monaco.png'; // Remplacez par votre propre image de circuit
 
-// Points de référence pour le tour
-const startLine = { x: 390, y: 500, width: 20, height: 5 }; // Ligne de départ
 
 // Contrôles clavier
 let keys = {
@@ -84,6 +83,7 @@ function handleKeyUp(e) {
 }
 
 // Mettre à jour le jeu
+// Mettre à jour le jeu
 function updateGame() {
     // Chrono
     timer += 1 / 60;
@@ -107,7 +107,7 @@ function updateGame() {
         car.angle += 0.05;
     }
 
-    // Détection de la ligne de départ
+    // Détection de la ligne de départ verticale
     if (
         car.x > startLine.x &&
         car.x < startLine.x + startLine.width &&
@@ -116,19 +116,20 @@ function updateGame() {
     ) {
         if (!hasCrossedStart) {
             hasCrossedStart = true;
+            laps++; // Incrémentez le tour
+            lapCountDisplay.textContent = `${laps} / 3`; // Affiche le nombre de tours
         }
     } else if (hasCrossedStart) {
-        laps++;
-        lapCountDisplay.textContent = `${laps} / 3`;
         hasCrossedStart = false;
-
-        if (laps >= 3) {
-            clearInterval(gameInterval);
-            alert(`🏁 Course terminée en ${minutes}:${seconds < 10 ? '0' : ''}${seconds} !`);
-        }
     }
 
-    drawGame();
+    // Si tous les tours sont terminés
+    if (laps >= 3) {
+        clearInterval(gameInterval);
+        alert(`🏁 Course terminée en ${minutes}:${seconds < 10 ? '0' : ''}${seconds} !`);
+    }
+
+    drawGame();  // Mise à jour du dessin
 }
 
 // Dessiner le jeu
@@ -140,8 +141,8 @@ function drawGame() {
         ctx.drawImage(trackImage, 0, 0, canvas.width, canvas.height);
     }
 
-    // Dessiner la ligne de départ
-    ctx.fillStyle = 'white';
+    // Dessiner la ligne de départ en rouge (verticale)
+    ctx.fillStyle = 'red';  // Couleur rouge pour la ligne de départ
     ctx.fillRect(startLine.x, startLine.y, startLine.width, startLine.height);
 
     // Dessiner la voiture
