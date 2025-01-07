@@ -28,12 +28,28 @@ let car = {
     angle: 0,
     image: new Image()
 };
-const startLine = { x: 351, y: 301, width: 5, height: 40 }; // Ligne de départ, positionnée plus bas
 
 // Image du circuit
 let trackImage = new Image();
-trackImage.src = 'images/Monaco.png'; // Remplacez par votre propre image de circuit
+trackImage.src = 'images/Monaco.png'; // Par défaut, le circuit Monaco
 
+// Paramètres des lignes de départ et des positions de départ pour chaque circuit
+const startLines = {
+    monaco: { x: 351, y: 301, width: 5, height: 40 },
+    hockenheim: { x: 351, y: 301, width: 5, height: 40 }, // Exemple pour hockenheim
+    shanghai: { x: 301, y: 550, width: 5, height: 40 }, // Exemple pour Shanghai
+    nuerburgring: { x: 600, y: 420, width: 5, height: 40 } // Exemple pour Nuerburgring
+};
+
+const startPositions = {
+    monaco: { x: 350, y: 300 }, // Position de départ pour Monaco
+    hockenheim: { x: 100, y: 300 }, // Position de départ pour hockenheim
+    shanghai: { x: 301, y: 550 }, // Position de départ pour Shanghai
+    nuerburgring: { x: 600, y: 420 } // Position de départ pour Nuerburgring
+};
+
+let currentStartLine = startLines.monaco; // Par défaut, Monaco
+let currentStartPosition = startPositions.monaco; // Par défaut, Monaco
 
 // Contrôles clavier
 let keys = {
@@ -62,6 +78,38 @@ startButton.addEventListener('click', () => {
     startGame();
 });
 
+// Gérer la sélection du circuit et mettre à jour l'image de fond et la position de départ
+// Gérer la sélection du circuit et mettre à jour l'image de fond et la position de départ
+function updateTrackImage() {
+    const circuit = document.getElementById('circuit-select').value;
+    
+    timer = 0;
+    timerDisplay.textContent = "0:00"; // Réinitialiser l'affichage du timer
+
+    // Mettre à jour l'image du circuit en fonction de la sélection
+    if (circuit.toLowerCase() === 'hockenheim') {
+        trackImage.src = 'images/Hockenheim.png';
+        currentStartLine = startLines.hockenheim;
+        currentStartPosition = startPositions.hockenheim;
+    } else if (circuit.toLowerCase() === 'monaco') {
+        trackImage.src = 'images/monaco.png';
+        currentStartLine = startLines.monaco;
+        currentStartPosition = startPositions.monaco;
+    } else if (circuit.toLowerCase() === 'shanghai') {
+        trackImage.src = 'images/shanghai.png';
+        currentStartLine = startLines.shanghai;
+        currentStartPosition = startPositions.shanghai;
+    } else if (circuit.toLowerCase() === 'nuerburgring') {
+        trackImage.src = 'images/nuerburgring.png';
+        currentStartLine = startLines.nuerburgring;
+        currentStartPosition = startPositions.nuerburgring;
+    }
+    // Réinitialiser la position de la voiture au départ du circuit
+    car.x = currentStartPosition.x;
+    car.y = currentStartPosition.y;
+}
+
+
 // Démarrer le jeu
 function startGame() {
     timer = 0;
@@ -82,7 +130,6 @@ function handleKeyUp(e) {
     if (e.key in keys) keys[e.key] = false;
 }
 
-// Mettre à jour le jeu
 // Mettre à jour le jeu
 function updateGame() {
     // Chrono
@@ -107,12 +154,12 @@ function updateGame() {
         car.angle += 0.05;
     }
 
-    // Détection de la ligne de départ verticale
+    // Détection de la ligne de départ (gauche à droite)
     if (
-        car.x > startLine.x &&
-        car.x < startLine.x + startLine.width &&
-        car.y > startLine.y &&
-        car.y < startLine.y + startLine.height
+        car.x > currentStartLine.x &&
+        car.x < currentStartLine.x + currentStartLine.width &&
+        car.y > currentStartLine.y &&
+        car.y < currentStartLine.y + currentStartLine.height
     ) {
         if (!hasCrossedStart) {
             hasCrossedStart = true;
@@ -143,7 +190,7 @@ function drawGame() {
 
     // Dessiner la ligne de départ en rouge (verticale)
     ctx.fillStyle = 'red';  // Couleur rouge pour la ligne de départ
-    ctx.fillRect(startLine.x, startLine.y, startLine.width, startLine.height);
+    ctx.fillRect(currentStartLine.x, currentStartLine.y, currentStartLine.width, currentStartLine.height);
 
     // Dessiner la voiture
     if (car.image.complete) {
