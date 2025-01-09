@@ -9,7 +9,19 @@
 </head>
 <body>
     <h1>🏁 Course F1 Simulator 🏁</h1>
-    
+
+    <!-- Choix de circuit (Menu déroulant) -->
+    <div id="circuit-selection">
+        <h2>Choisissez votre circuit</h2>
+        <select id="circuit-select" onchange="updateTrackImage()">
+            <option value="monaco">Circuit Monaco</option>
+            <option value="paul-ricard">Circuit Hockenheim</option>
+            <option value="shanghai">Circuit Shanghai</option>
+            <option value="nuerburgring">Circuit Nuerburgring</option>
+        </select>
+    </div>
+
+    <!-- Sélection de la voiture et début du jeu -->
     <div id="vehicle-selection">
         <h2>Choisissez votre voiture</h2>
         <img id="vehicle-image" src="images/f1-ferrari.png" alt="Voiture sélectionnée">
@@ -19,7 +31,7 @@
         </div>
         <button id="start-game">🏎️ Commencer la course</button>
     </div>
-    
+
     <div id="game-screen">
         <canvas id="game-canvas" width="800" height="600"></canvas>
         <div id="dashboard">
@@ -31,5 +43,7 @@
             </div>
         </div>
     </div>
+
+    <a href="login.html">Se connecter / S'inscrire</a>
 </body>
 </html>
