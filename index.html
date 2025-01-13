@@ -15,7 +15,7 @@
         <h2>Choisissez votre circuit</h2>
         <select id="circuit-select" onchange="updateTrackImage()">
             <option value="monaco">Circuit Monaco</option>
-            <option value="paul-ricard">Circuit Hockenheim</option>
+            <option value="paul-ricard">Circuit Paul Ricard</option>
             <option value="shanghai">Circuit Shanghai</option>
             <option value="nuerburgring">Circuit Nuerburgring</option>
         </select>
@@ -32,6 +32,7 @@
         <button id="start-game">🏎️ Commencer la course</button>
     </div>
 
+    <!-- Écran de jeu -->
     <div id="game-screen">
         <canvas id="game-canvas" width="800" height="600"></canvas>
         <div id="dashboard">
@@ -42,7 +43,12 @@
                 🏁 <strong>Tours :</strong> <span id="lap-count">0 / 3</span>
             </div>
         </div>
-    </div>
+
+        <!-- Joystick -->
+        <div id="joystick-container" style="display: none;">
+            <div id="joystick"></div>
+        </div>
+        </div>
 
     <a href="login.html">Se connecter / S'inscrire</a>
 </body>

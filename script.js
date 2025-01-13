@@ -1,5 +1,9 @@
+const isMobile = window.innerWidth <= 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+
+
 // Variables globales
-const vehicles = ['images/f1-ferrari.png', 'images/f1.png', 'images/f1-mclaren.png', 'images/f1-redbull.png'];
+const vehicles = ['images/f1-ferrari.png', 'images/f1.png', 'images/f1-mclaren.png', 'images/f1-redbull.png','images/barbie.png'];
 let currentVehicleIndex = 0;
 const vehicleImage = document.getElementById('vehicle-image');
 const prevButton = document.getElementById('prev');
@@ -50,6 +54,37 @@ const startPositions = {
 
 let currentStartLine = startLines.monaco; // Par défaut, Monaco
 let currentStartPosition = startPositions.monaco; // Par défaut, Monaco
+function initJoystickControl() {
+    const joystick = document.getElementById('joystick');
+    let isDragging = false;
+    let startX, startY;
+
+    joystick.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+    });
+
+    joystick.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+
+        const touch = e.touches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+
+        // Appliquez les déplacements à la voiture
+        car.x += dx * 0.1; // Ajustez la sensibilité si nécessaire
+        car.y += dy * 0.1;
+
+        startX = touch.clientX;
+        startY = touch.clientY;
+    });
+
+    joystick.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+}
 
 // Contrôles clavier
 let keys = {

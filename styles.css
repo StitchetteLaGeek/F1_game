@@ -103,19 +103,20 @@ h1 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-#vehicle-selection h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #fff;
+#vehicle-selection {
+    margin-bottom: 0; /* Réduit tout espace en bas */
+    padding-bottom: 0; /* Supprime tout rembourrage en bas */
 }
 
 #vehicle-image {
-    border: 5px solid #fff;
-    border-radius: 5px;
-    background: #ccc;
-    width: 300px;
-    height: 150px;
-    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; /* Ajuste l'image à la largeur de l'écran */
+}
+
+#joystick-container {
+    position: absolute;
+    bottom: 10px; /* Toujours sous l'image */
 }
 
 #vehicle-selection button {
@@ -135,19 +136,38 @@ h1 {
     color: #fff;
 }
 
-/* === Écran de jeu === */
 #game-screen {
-    display: none;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+/* === Circuit Responsive === */
+
+
+/* === Media Queries pour ajuster selon la taille de l'écran === */
+@media (max-width: 768px) {
+    #game-canvas {
+        max-width: 90%; /* Réduit la largeur pour les écrans mobiles */
+        margin: 10px auto;
+    }
+
+    #joystick-container {
+        bottom: 20px; /* Ajuste la position pour éviter qu'il ne chevauche le circuit */
+    }
 }
 
-#game-canvas {
-    border: 5px solid #000;
-    background: #ccc;
-    display: block;
-    margin: 20px auto;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+@media (max-width: 480px) {
+    #game-canvas {
+        max-width: 100%; /* Prend toute la largeur disponible sur très petits écrans */
+    }
+
+    #joystick-container {
+        bottom: 10px; /* Réduit l'espace en bas pour petits écrans */
+    }
 }
+
 
 /* === Tableau de bord === */
 #dashboard {
@@ -297,4 +317,72 @@ h1 {
 
 #inscription a:hover {
     text-decoration: underline;
+}
+#dashboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border-top: 5px solid #e10600;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+#dashboard div {
+    text-align: center;
+}
+
+#timer, #lap-count, #speedometer {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#joystick-container {
+    position: absolute;
+    bottom: 50px; /* En bas de l'écran sur mobile */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#joystick {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 3px solid #000;
+    border-radius: 50%;
+    position: relative;
+    touch-action: none; /* Empêche le défilement pendant l'utilisation */
+}
+
+
+#up {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#down {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#left {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#right {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
