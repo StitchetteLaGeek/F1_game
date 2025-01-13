@@ -1,28 +1,46 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $mdp = $_POST['password'];
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    $mdp = htmlspecialchars($_POST['password']);
 
+    if (!email){
+        echo "<p>Rentre un mail chacal !</p>";
+        exit;
+    }
+    if (empty($mdp)){
+        echo "<p> Rentre un mot de passe chef</p>";
+        exit;
+    }
+        
     $host = 'localhost';
     $dbname = 'e2202522';
     $user = 'e2202522';
     $password = 'metcquetuveux';
+    try{
+        $login = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+        $login->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (PDOException $e){
+        die("<p>Problème de co chef : " . $e->getMessage() . "</p>");
+    }
     
-    $login = new mysqli($_serveur,$utilisateur,$modepasse,$base);
-    if ($login->connect_error) die ("Problème de co chef : " . $login->connect_error);
-
-    if ($email && $password){
+    try{
         $stmt = $login->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $resultat = $stmt->get_result();
-        if ($resultat->num_rows <= 0) echo "<p> Email introuvable chef t pas co </p>";
+        // $stmt->bind_param("s", $email);
+        $stmt->execute([$email]);
+        // $resultat = $stmt->get_result();
+        if ($stmt->rowCount() <= 0) echo "<p> Email introuvable chef t pas co </p>";
         else {
-            if ($resultat['password'] == $mdp){
-                header("Location : index.php");
+            $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($mdp, $user_data['password'])){
+                header("Location: index.php");
                 exit;
             }
-            else echo "<p> mot de passse incorrect arrête de hacker !!! </p>"
+            else echo "<p> mot de passse incorrect arrête de hacker !!! </p>";
         }
+    }
+    catch (PDOException $e){
+        echo "<p> Probleme chef : " . $e->getMessage() . "</p>";
+    }
 }
 ?>
