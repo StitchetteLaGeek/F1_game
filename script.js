@@ -15,12 +15,19 @@ const timerDisplay = document.getElementById('timer');
 const lapCountDisplay = document.getElementById('lap-count');
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
+const checkpointthreshold = 20;
 
 // Variables du jeu
 let timer = 0;
 let laps = 0;
 let hasCrossedStart = false; // Pour s'assurer que le joueur passe par la ligne de départ
 let gameInterval;
+
+// liste des checkpoints
+
+let checkpoints = [
+    {x: 1, y: 1, validated: false}
+];
 
 // Position et vitesse de la voiture
 let car = {
@@ -32,6 +39,8 @@ let car = {
     angle: 0,
     image: new Image()
 };
+
+
 
 // Image du circuit
 let trackImage = new Image();
@@ -112,6 +121,16 @@ startButton.addEventListener('click', () => {
     gameScreen.style.display = 'block';
     startGame();
 });
+// gérer les checkpoints
+
+function checkpoint(){
+    for (let i = 0; i < checkpoints.length; i++){
+        if (!checkpoints[i].validated){
+            let dist = Math.sqrt(Math.pow(car.x - checkpoints[i].x, 2) + (Math.pow(car.y - checkpoints[i].y, 2));
+
+            if (dist <
+    }
+}
 
 // Gérer la sélection du circuit et mettre à jour l'image de fond et la position de départ
 // Gérer la sélection du circuit et mettre à jour l'image de fond et la position de départ
