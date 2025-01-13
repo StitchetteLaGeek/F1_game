@@ -26,9 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     try{
         $stmt = $login->prepare("SELECT * FROM users WHERE email = ?");
-        // $stmt->bind_param("s", $email);
         $stmt->execute([$email]);
-        // $resultat = $stmt->get_result();
         if ($stmt->rowCount() <= 0) echo "<p> Email introuvable chef t pas co </p>";
         else {
             $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
