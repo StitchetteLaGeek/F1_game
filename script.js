@@ -25,9 +25,14 @@ let gameInterval;
 
 // liste des checkpoints
 
-let checkpoints = [
-    {x: 1, y: 1, validated: false}
-];
+let checkpoints = {
+    monaco: [{x: 1, y: 1, validated: false},
+             {x: 2, y: 2, validated: false}],
+    hockenheim: [],
+    shanghai: [],
+    nuerburgring: [],
+    
+};
 
 // Position et vitesse de la voiture
 let car = {
@@ -63,6 +68,7 @@ const startPositions = {
 
 let currentStartLine = startLines.monaco; // Par défaut, Monaco
 let currentStartPosition = startPositions.monaco; // Par défaut, Monaco
+let currentCheckpoints = checkpoints.monaco;
 function initJoystickControl() {
     const joystick = document.getElementById('joystick');
     let isDragging = false;
@@ -121,17 +127,22 @@ startButton.addEventListener('click', () => {
     gameScreen.style.display = 'block';
     startGame();
 });
+
 // gérer les checkpoints
 
 function checkpoint(){
-    for (let i = 0; i < checkpoints.length; i++){
-        if (!checkpoints[i].validated){
-            let dist = Math.sqrt(Math.pow(car.x - checkpoints[i].x, 2) + (Math.pow(car.y - checkpoints[i].y, 2));
-
-            if (dist <
+    for (let i = 0; i < currentCheckpoints.length; i++){
+        if (!currentCheckpoints[i].validated){
+            if (Math.sqrt(Math.pow(car.x - currentCheckpoints[i].x, 2) + (Math.pow(car.y - currentCheckpoints[i].y, 2) < ckeckpointtreshold){
+                currentCheckpoints[i].validated = true;
+                break;
+            }
+        }
     }
 }
 
+
+    
 // Gérer la sélection du circuit et mettre à jour l'image de fond et la position de départ
 // Gérer la sélection du circuit et mettre à jour l'image de fond et la position de départ
 function updateTrackImage() {
@@ -145,18 +156,22 @@ function updateTrackImage() {
         trackImage.src = 'images/Hockenheim.png';
         currentStartLine = startLines.hockenheim;
         currentStartPosition = startPositions.hockenheim;
+        currentCheckpoints = checkpoints.hockenhein;
     } else if (circuit.toLowerCase() === 'monaco') {
         trackImage.src = 'images/monaco.png';
         currentStartLine = startLines.monaco;
         currentStartPosition = startPositions.monaco;
+        currentCheckpoints = checkpoints.monaco;
     } else if (circuit.toLowerCase() === 'shanghai') {
         trackImage.src = 'images/shanghai.png';
         currentStartLine = startLines.shanghai;
         currentStartPosition = startPositions.shanghai;
+        currentCheckpoints = checkpoints.shanghai;
     } else if (circuit.toLowerCase() === 'nuerburgring') {
         trackImage.src = 'images/nuerburgring.png';
         currentStartLine = startLines.nuerburgring;
         currentStartPosition = startPositions.nuerburgring;
+        currentCheckpoints = checkpoints.nuerburgring;
     }
     // Réinitialiser la position de la voiture au départ du circuit
     car.x = currentStartPosition.x;
@@ -208,16 +223,22 @@ function updateGame() {
         car.angle += 0.05;
     }
 
+    checkpoint();
+
     // Détection de la ligne de départ (gauche à droite)
     if (
         car.x > currentStartLine.x &&
         car.x < currentStartLine.x + currentStartLine.width &&
         car.y > currentStartLine.y &&
-        car.y < currentStartLine.y + currentStartLine.height
+        car.y < currentStartLine.y + currentStartLine.height &&
+        currentCheckpoints.filter(checkpoint => checkpoint.validated).length === currentCheckpoints.length
     ) {
         if (!hasCrossedStart) {
             hasCrossedStart = true;
             laps++; // Incrémentez le tour
+            currentCheckpoints.forEach(checkpoint => {
+                checkpoint.validated = false;
+            });
             lapCountDisplay.textContent = `${laps} / 3`; // Affiche le nombre de tours
         }
     } else if (hasCrossedStart) {
