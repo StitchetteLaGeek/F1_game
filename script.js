@@ -26,15 +26,15 @@ let gameInterval;
 // liste des checkpoints
 
 let checkpoints = {
-    monaco: [{x: 1, y: 1, validated: false},
-             {x: 2, y: 2, validated: false}],
-    hockenheim: [{x: 1, y: 1, validated: false},
-                 {x: 2, y: 2, validated: false}],
-    shanghai: [{x: 1, y: 1, validated: false},
-               {x: 2, y: 2, validated: false}],
-    nuerburgring: [{x: 1, y: 1, validated: false},
-                   {x: 2, y: 2, validated: false}],
-    
+    monaco: [{x: 200, y: 195, validated: false},
+             {x: 600, y: 150, validated: false},
+             {x: 600, y: 520, validated: false}],
+    hockenheim: [{x: 100, y: 200, validated: false},
+                 {x: 500, y: 350, validated: false}],
+    shanghai: [{x: 300, y: 100, validated: false},
+               {x: 500, y: 540, validated: false}],
+    nuerburgring: [{x: 250, y: 362, validated: false},
+                   {x: 420, y: 190, validated: false}],
 };
 
 // Position et vitesse de la voiture
@@ -132,17 +132,17 @@ startButton.addEventListener('click', () => {
 });
 
 // gérer les checkpoints
-
-function checkpoint(){
-    for (let i = 0; i < currentCheckpoints.length; i++){
-        if (!currentCheckpoints[i].validated){
+function checkpoint() {
+    for (let i = 0; i < currentCheckpoints.length; i++) {
+        if (!currentCheckpoints[i].validated) {
             if (Math.sqrt(Math.pow(car.x - currentCheckpoints[i].x, 2) + Math.pow(car.y - currentCheckpoints[i].y, 2)) < checkpointthreshold) {
                 currentCheckpoints[i].validated = true;
-                break;
+                console.log(`Checkpoint ${i + 1} validé !`);
             }
         }
     }
 }
+
 
 
     
@@ -278,4 +278,17 @@ function drawGame() {
         ctx.drawImage(car.image, -car.width / 2, -car.height / 2, car.width, car.height);
         ctx.restore();
     }
+
+    // Dessiner les checkpoints
+    currentCheckpoints.forEach(checkpoint => {
+        if (!checkpoint.validated) {
+            ctx.beginPath();
+            ctx.arc(checkpoint.x, checkpoint.y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = 'red';  // Point rouge pour le checkpoint
+            ctx.fill();
+        }
+    });
 }
+
+
+

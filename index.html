@@ -5,7 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini-Jeu de Course</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style_accessoire.css">
+    <link rel="stylesheet" href="page.css">
+    <script src="joystick.js" defer></script>
     <script src="script.js" defer></script>
+    <script>
+        window.addEventListener("load", function () {
+            if (/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)) {
+                new JoyStick({});
+            } else {
+                console.log("Joystick activé uniquement sur mobile.");
+            }
+        });
+    </script>
 </head>
 <body>
     <h1>🏁 Course F1 Simulator 🏁</h1>
@@ -33,11 +45,22 @@
     </div>
 
     <!-- Écran de jeu -->
-    <div id="game-screen">
+    <div id="game-screen" style="display: none;">
         <canvas id="game-canvas" width="800" height="600"></canvas>
         <div id="dashboard">
             <div>
                 ⏱️ <strong>Temps :</strong> <span id="timer">0:00</span>
+            </div>
+            <div id="speedometer">
+                <div class="wrapper">
+                    <div class="indicator-wrapper">
+                        <div id="needle"></div> <!-- Aiguille -->
+                    </div>
+                    <div class="bar bar-1"></div>
+                    <div class="bar bar-2"></div>
+                    <div class="bar bar-3"></div>
+                    <div class="bar bar-4"></div>
+                </div>
             </div>
             <div>
                 🏁 <strong>Tours :</strong> <span id="lap-count">0 / 3</span>
@@ -46,9 +69,8 @@
 
         <!-- Joystick -->
         <div id="joystick-container" style="display: none;">
-            <div id="joystick"></div>
         </div>
-        </div>
+    </div>
 
     <a href="login.html">Se connecter / S'inscrire</a>
 </body>
