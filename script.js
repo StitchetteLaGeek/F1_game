@@ -28,9 +28,12 @@ let gameInterval;
 let checkpoints = {
     monaco: [{x: 1, y: 1, validated: false},
              {x: 2, y: 2, validated: false}],
-    hockenheim: [],
-    shanghai: [],
-    nuerburgring: [],
+    hockenheim: [{x: 1, y: 1, validated: false},
+                 {x: 2, y: 2, validated: false}],
+    shanghai: [{x: 1, y: 1, validated: false},
+               {x: 2, y: 2, validated: false}],
+    nuerburgring: [{x: 1, y: 1, validated: false},
+                   {x: 2, y: 2, validated: false}],
     
 };
 
