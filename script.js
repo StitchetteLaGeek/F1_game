@@ -136,7 +136,7 @@ startButton.addEventListener('click', () => {
 function checkpoint(){
     for (let i = 0; i < currentCheckpoints.length; i++){
         if (!currentCheckpoints[i].validated){
-            if (Math.sqrt(Math.pow(car.x - currentCheckpoints[i].x, 2) + (Math.pow(car.y - currentCheckpoints[i].y, 2) < checkpointtreshold){
+            if (Math.sqrt(Math.pow(car.x - currentCheckpoints[i].x, 2) + (Math.pow(car.y - currentCheckpoints[i].y, 2) < checkpointthreshold){
                 currentCheckpoints[i].validated = true;
                 break;
             }
