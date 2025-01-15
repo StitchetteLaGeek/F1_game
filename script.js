@@ -133,7 +133,7 @@ startButton.addEventListener('click', () => {
 function checkpoint(){
     for (let i = 0; i < currentCheckpoints.length; i++){
         if (!currentCheckpoints[i].validated){
-            if (Math.sqrt(Math.pow(car.x - currentCheckpoints[i].x, 2) + (Math.pow(car.y - currentCheckpoints[i].y, 2) < ckeckpointtreshold){
+            if (Math.sqrt(Math.pow(car.x - currentCheckpoints[i].x, 2) + (Math.pow(car.y - currentCheckpoints[i].y, 2) < checkpointtreshold){
                 currentCheckpoints[i].validated = true;
                 break;
             }
@@ -156,7 +156,7 @@ function updateTrackImage() {
         trackImage.src = 'images/Hockenheim.png';
         currentStartLine = startLines.hockenheim;
         currentStartPosition = startPositions.hockenheim;
-        currentCheckpoints = checkpoints.hockenhein;
+        currentCheckpoints = checkpoints.hockenheim;
     } else if (circuit.toLowerCase() === 'monaco') {
         trackImage.src = 'images/monaco.png';
         currentStartLine = startLines.monaco;
