@@ -5,7 +5,7 @@ function verification(data){
     alert("envoie l'email chef");
     return false;
   }
-  if (mdp && mdp.length < 6){
+  if (password && password.length < 6){
     alert("rentre un mot de passe plus fort chef 6 caractères");
     return false;
   }
