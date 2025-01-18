@@ -7,20 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="connexion">
-        <h2>Connexion</h2>
-        <form action="formulaire.php" method="POST">
-            <label for="pseudo">Pseudo:</label>
-            <input type="text" id="pseudo" name="pseudo" required><br>
-        
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required><br>
-        
-            <button type="submit">Se connecter</button>
-        </form>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="login.html">S'inscrire</a></li>
+        </ul>
+    </nav>
 
-        <p>Pas encore inscrit ? <a href="login.html">S'inscrire ici</a></p>
-        <p>Retour à <a href="index.html">la page d'accueil</a></p>
+    <div id="connexion" class="form-container">
+        <h2>Connexion</h2>
+        <form action="formulaire.php" method="POST" class="form-content">
+            <label for="pseudo" class="form-label">Pseudo:</label>
+            <input type="text" id="pseudo" name="pseudo" class="form-input" required><br>
+        
+            <label for="password" class="form-label">Mot de passe:</label>
+            <input type="password" id="password" name="password" class="form-input" required><br>
+        
+            <button type="submit" class="form-button">Se connecter</button>
+        </form>
+        <p>Pas encore inscrit ? <a href="login.html" class="form-link">S'inscrire ici</a></p>
+        <p>Retour à <a href="index.html" class="form-link">la page d'accueil</a></p>
     </div>
 </body>
 </html>

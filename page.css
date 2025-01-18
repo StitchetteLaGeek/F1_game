@@ -198,13 +198,23 @@ h1 {
 /* === Tableau de bord === */
 #dashboard {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Maintient l'espacement entre les éléments */
     align-items: center;
     background: #000;
     color: #fff;
-    padding: 10px;
+    padding: 40px;
     border-top: 5px solid #e10600;
     margin-top: 20px;
+}
+
+#timer {
+    margin-right: 50px;  /* Pousse "temps" vers la gauche */
+    font-size: 2rem; /* Ajuste la taille de la police */
+}
+
+#lap-count {
+    margin-left: 50px;  /* Pousse "tours" vers la droite */
+    font-size: 2rem; /* Ajuste la taille de la police */
 }
 
 #dashboard div {

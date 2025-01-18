@@ -7,19 +7,21 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="style_accessoire.css">
     <link rel="stylesheet" href="page.css">
-    <script src="joystick.js" defer></script>
+
     <script src="script.js" defer></script>
-    <script>
-        window.addEventListener("load", function () {
-            if (/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)) {
-                new JoyStick({});
-            } else {
-                console.log("Joystick activé uniquement sur mobile.");
-            }
-        });
-    </script>
+   
 </head>
 <body>
+    <!-- Menu de navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+            <li><a href="inscription.html">S'inscrire</a></li>
+            <li><a href="profil.html">Profil</a></li>
+        </ul>
+    </nav>
+
     <h1>🏁 Course F1 Simulator 🏁</h1>
 
     <!-- Choix de circuit (Menu déroulant) -->
@@ -51,27 +53,20 @@
             <div>
                 ⏱️ <strong>Temps :</strong> <span id="timer">0:00</span>
             </div>
-            <div id="speedometer">
-                <div class="wrapper">
-                    <div class="indicator-wrapper">
-                        <div id="needle"></div> <!-- Aiguille -->
-                    </div>
-                    <div class="bar bar-1"></div>
-                    <div class="bar bar-2"></div>
-                    <div class="bar bar-3"></div>
-                    <div class="bar bar-4"></div>
-                </div>
-            </div>
+                <!-- Flèches directionnelles pour téléphone -->
+    <div id="arrow-buttons" class="arrow-buttons">
+        <div id="arrow-up" class="arrow-button arrow-up">↑</div>
+        <div id="arrow-left" class="arrow-button arrow-left">←</div>
+        <div id="arrow-right" class="arrow-button arrow-right">→</div>
+        <div id="arrow-down" class="arrow-button arrow-down">↓</div>
+    </div>
             <div>
                 🏁 <strong>Tours :</strong> <span id="lap-count">0 / 3</span>
             </div>
         </div>
-
-        <!-- Joystick -->
-        <div id="joystick-container" style="display: none;">
-        </div>
     </div>
 
-    <a href="login.html">Se connecter / S'inscrire</a>
+
+
 </body>
 </html>

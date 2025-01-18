@@ -1,3 +1,43 @@
+/* === Global Styles === */
+body {
+    background-color: #000; /* Fond noir global */
+    color: #fff; /* Texte blanc */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Menu en haut de la page === */
+nav {
+    background-color: #1e1e1e; /* Fond sombre pour le menu */
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #e10600; /* Couleur rouge pour les liens */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #fff; /* Couleur blanche au survol */
+    text-decoration: underline;
+}
 
 
 /* === Choix du circuit (Menu déroulant) === */
@@ -83,28 +123,18 @@
     #game-canvas {
         max-width: 90%; /* Réduit la largeur pour les écrans mobiles */
         margin: 10px auto;
-    }
+    }}
 
-    #joystick-container {
-        bottom: 20px; /* Ajuste la position pour éviter qu'il ne chevauche le circuit */
-    }
-}
 
 @media (max-width: 480px) {
     #game-canvas {
         max-width: 100%; /* Prend toute la largeur disponible sur très petits écrans */
-    }
+    }}
 
-    #joystick-container {
-        bottom: 10px; /* Réduit l'espace en bas pour petits écrans */
-    }
-}
 
 
 
 #timer, #lap-count {
     font-size: 1.5rem;
     font-weight: bold;
-}
-
-
+};

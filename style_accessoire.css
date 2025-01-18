@@ -1,121 +1,59 @@
-/* Styles pour le joystick */
-#joystick-container {
-    display: none;
-    position: fixed;
-    bottom: 10%;
+#arrow-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    position: absolute;
+    top: 800px; /* Modifier la position des flèches */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 10;
+    gap: 10px;
 }
 
-#joystick {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background-color: rgba(200, 200, 200, 0.3);
-    position: relative;
+/* Style des boutons flèches */
+#arrow-buttons button {
+    font-size: 2rem;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
-
-
-/* Styles pour le speedometer */
-/* Speedometer */
-#speedometer {
-    margin: 10px auto;
-    width: 180px;
-    height: 90px;
+/* Rendre les flèches visibles uniquement sur mobile */
+@media (max-width: 768px) {
+    #arrow-buttons {
+        visibility: visible;
+    }
 }
 
-#speedometer .wrapper {
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 360px;
-    border-top-right-radius: 360px;
-    overflow: hidden;
-    position: relative;
+/* Effet d'activation de la touche (pression sur la flèche) */
+.arrow-button:active {
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
-#speedometer .wrapper .indicator-wrapper {
-    position: absolute;
-    left: 15%;
-    top: 30%;
-    width: 70%;
-    height: 70%;
-    border-top-left-radius: 360px;
-    border-top-right-radius: 360px;
-    background-color: #ffffff;
-    z-index: 400;
+/* Positionnement des flèches comme un clavier */
+.arrow-up {
+    grid-column: 2;
+    grid-row: 1;
 }
 
-#speedometer .wrapper .bar {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform-origin: bottom center;
+.arrow-left {
+    grid-column: 1;
+    grid-row: 2;
 }
 
-#speedometer .wrapper .bar-1 {
-    top: 0;
-    left: 0;
-    z-index: 200;
-    transform: rotate(-140deg);
-    background: linear-gradient(to right, green, yellow);
+.arrow-right {
+    grid-column: 3;
+    grid-row: 2;
 }
 
-#speedometer .wrapper .bar-2 {
-    top: 0;
-    right: 0;
-    z-index: 150;
-    transform: rotate(-90deg);
-    background: linear-gradient(to right, yellow, orange);
+.arrow-down {
+    grid-column: 2;
+    grid-row: 3;
 }
 
-#speedometer .wrapper .bar-3 {
-    top: 0;
-    left: 0;
-    z-index: 100;
-    transform: rotate(-40deg);
-    background: linear-gradient(to right, orange, red);
-}
-
-#speedometer .wrapper .bar-4 {
-    top: 0;
-    left: 0;
-    z-index: 0;
-    transform: rotate(30deg);
-    background: red;
-}
-
-#indicator {
-    width: 5px;
-    height: 80%;
-    background: black;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) rotate(-140deg);
-    transform-origin: bottom;
-    z-index: 500;
-}
-#speedometer .wrapper .indicator-wrapper {
-    position: absolute;
-    left: 10%;
-    top: 20%;
-    width: 80%;
-    height: 80%;
-    border-top-left-radius: 360px;
-    border-top-right-radius: 360px;
-    background-color: #ffffff;
-    z-index: 400;
-}
-
-#speedometer .wrapper .indicator-wrapper #needle {
-    position: absolute;
-    width: 2px;
-    height: 50%;
-    background-color: black;
-    left: 50%;
-    bottom: 50%;
-    transform-origin: bottom center;
-    transition: transform 0.1s ease-out; /* L'animation de l'aiguille */
+/* Ajouter une bordure autour des boutons pour simuler un clavier */
+.arrow-button {
+    border: 2px solid #333;
 }
