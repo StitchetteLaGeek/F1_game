@@ -5,11 +5,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp = htmlspecialchars($_POST['password']);
 
     if (!$email){
-        echo "<p>Rentre un mail chacal !</p>";
+        echo "<p>Rentrez un adresse mail.</p>";
         exit;
     }
     if (empty($mdp)){
-        echo "<p> Rentre un mot de passe chef</p>";
+        echo "<p>Rentrez un mot de passe</p>";
         exit;
     }
         
@@ -22,14 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $login->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e){
-        die("<p>Problème de co chef : " . $e->getMessage() . "</p>");
+        die("<p>Problème de connexion : " . $e->getMessage() . "</p>");
     }
     
     try{
         $stmt = $login->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         if ($stmt->rowCount() <= 0){
-            echo "<p> Email introuvable chef t pas co </p>";
+            echo "<p> Email introuvable.</p>";
             exit;
         }
         else {
@@ -41,13 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit;
             }
             else {
-                echo "<p> mot de passse incorrect arrête de hacker !!! </p>";
+                echo "<p> Mot de passse incorrect.</p>";
                 exit;
             }
         }
     }
     catch (PDOException $e){
-        echo "<p> Probleme chef : " . $e->getMessage() . "</p>";
+        echo "<p> Problème de connnexion : " . $e->getMessage() . "</p>";
         exit;
     }
 }
