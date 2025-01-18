@@ -6,7 +6,7 @@ if (!isset($_SESSION['pseudo'])){
 }
 else {
     $_SESSION['connected'] = true;
-    echo "<p id = 'connexion'> " . $_SESSION['pseudo'] . " <a href = 'logout.php'> Déconnexion </a></p> ";
+    echo "<p id = 'login'> " . $_SESSION['pseudo'] . " <a href = 'logout.php'> Déconnexion </a></p> ";
 }
 ?>
 
