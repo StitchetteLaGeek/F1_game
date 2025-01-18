@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
