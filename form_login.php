@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,8 +14,8 @@
     <div id="connexion">
         <h2>Connexion</h2>
         <form action="login.php" method="POST">
-            <label for="pseudo">Pseudo:</label>
-            <input type="text" id="pseudo" name="pseudo" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
         
             <label for="password">Mot de passe:</label>
             <input type="password" id="password" name="password" required><br>
