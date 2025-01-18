@@ -51,6 +51,20 @@ let keys = {
     ArrowLeft: false,
     ArrowRight: false
 };
+window.addEventListener('load', function() {
+    // Détecter si l'appareil est un mobile ou un ordinateur
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    // Récupérer l'élément contenant les flèches
+    var arrowButtons = document.getElementById('arrow-buttons');
+    
+    // Si l'utilisateur est sur un mobile, afficher les flèches
+    if (isMobile) {
+        arrowButtons.style.display = 'grid';
+    } else {
+        arrowButtons.style.display = 'none';  // Cacher les flèches sur PC
+    }
+});
 
 // Fonction pour initialiser les contrôles sur mobile
 function initArrowControl() {

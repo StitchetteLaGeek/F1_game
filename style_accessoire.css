@@ -3,7 +3,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     position: absolute;
-    top: 780px; /* Position des flèches */
+    top: 810px; /* Modifier la position des flèches */
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -20,21 +20,10 @@
     border-radius: 5px;
 }
 
-/* Rendre les flèches visibles uniquement sur téléphone */
+/* Rendre les flèches visibles uniquement sur mobile */
 @media (max-width: 768px) {
     #arrow-buttons {
-        display: grid; /* Affiche les flèches en grille sur mobile */
-    }
-
-    .arrow-button {
-        font-size: 1.5rem; /* Réduire la taille des flèches pour les petits écrans */
-    }
-}
-
-/* Cacher les flèches sur PC */
-@media (min-width: 769px) {
-    #arrow-buttons {
-        visibility: hidden; /* Cacher les flèches sur les grands écrans */
+        visibility: visible;
     }
 }
 

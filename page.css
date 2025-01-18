@@ -196,256 +196,52 @@ h1 {
 
 
 /* === Tableau de bord === */
-/* === Styles Généraux === */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #1e1e1e;
-    color: #fff;
-    text-align: center;
-}
-
-h1 {
-    color: #e10600; /* Rouge F1 */
-    font-size: 3rem;
-    margin: 20px 0;
-    text-transform: uppercase;
-}
-
-/* === Section Connexion / Inscription === */
-#connexion-inscription {
-    background: linear-gradient(to bottom, #e10600, #1e1e1e);
-    padding: 30px;
-    border: 5px solid #fff;
-    border-radius: 10px;
-    width: 60%;
-    margin: 30px auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-#connexion-inscription h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #fff;
-}
-
-#connexion-inscription form {
-    text-align: left;
-    display: inline-block;
-    width: 100%;
-    max-width: 400px;
-}
-
-#connexion-inscription input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background: #333;
-    color: #fff;
-}
-
-#connexion-inscription button {
-    background: #fff;
-    color: #e10600;
-    border: none;
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#connexion-inscription button:hover {
-    background: #e10600;
-    color: #fff;
-}
-/* === Styles pour la page de connexion === */
-#connexion {
-    background: linear-gradient(to bottom, #e10600, #1e1e1e);
-    padding: 30px;
-    border: 5px solid #fff;
-    border-radius: 10px;
-    width: 60%;
-    margin: 30px auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-#connexion h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #fff;
-}
-
-#connexion form {
-    text-align: left;
-    display: inline-block;
-    width: 100%;
-    max-width: 400px;
-}
-
-#connexion input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background: #333;
-    color: #fff;
-}
-
-#connexion button {
-    background: #fff;
-    color: #e10600;
-    border: none;
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#connexion button:hover {
-    background: #e10600;
-    color: #fff;
-}
-
-#connexion p {
-    color: #fff;
-    margin-top: 20px;
-}
-
-#connexion a {
-    color: #e10600;
-    text-decoration: none;
-}
-
-#connexion a:hover {
-    text-decoration: underline;
-}
-
-/* === Styles pour la page d'inscription === */
-#inscription {
-    background: linear-gradient(to bottom, #e10600, #1e1e1e);
-    padding: 30px;
-    border: 5px solid #fff;
-    border-radius: 10px;
-    width: 60%;
-    margin: 30px auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-#inscription h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #fff;
-}
-
-#inscription form {
-    text-align: left;
-    display: inline-block;
-    width: 100%;
-    max-width: 400px;
-}
-
-#inscription input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    background: #333;
-    color: #fff;
-}
-
-#inscription button {
-    background: #fff;
-    color: #e10600;
-    border: none;
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#inscription button:hover {
-    background: #e10600;
-    color: #fff;
-}
-
-#inscription p {
-    color: #fff;
-    margin-top: 20px;
-}
-
-#inscription a {
-    color: #e10600;
-    text-decoration: none;
-}
-
-#inscription a:hover {
-    text-decoration: underline;
-}
-
-
+/* === Tableau de bord === */
 /* === Tableau de bord === */
 /* === Tableau de bord === */
 #dashboard {
     display: flex;
-    justify-content: space-between; /* Espacement entre "Tours" et "Temps" */
+    justify-content: space-between; /* Espacement entre les éléments */
     align-items: center;
     background: #000;
     color: #fff;
-    padding: 70px 40px;
+    padding: 40px;
     border-top: 5px solid #e10600;
-    position: relative;
+    margin-top: 20px;
 }
 
-/* Divs pour "Temps" et "Tours" */
-#dashboard div {
-    font-size: 1.2rem; /* Taille de la police pour PC */
-    position: relative;
-    text-align: center; /* Pour aligner le texte au centre sur mobile */
+#timer, #lap-count {
+    display: flex;
+    flex-direction: column; /* Empile le texte et le chrono ou le nombre de tours */
+    align-items: center;
+    font-size: 2rem; /* Taille de police pour PC */
 }
 
-/* Modifier la position du temps */
-#dashboard div:first-child {
-    margin-left: 0; /* Réinitialiser le margin-left pour PC */
+#timer span, #lap-count span {
+    font-size: 1.5rem; /* Taille réduite pour les sous-titres (chrono et tours) */
 }
 
-/* Media Query pour les écrans mobiles */
+#timer {
+    margin-right: 50px; /* Pousse "Temps" vers la gauche */
+}
+
+#lap-count {
+    margin-left: 50px; /* Pousse "Tours" vers la droite */
+}
+
+/* Réduire l'espacement entre le texte et le chrono pour les petits écrans */
 @media (max-width: 768px) {
     #dashboard {
-        flex-direction: column; /* Mettre en colonne sur mobile */
-        padding: 40px 20px; /* Réduire les paddings sur mobile */
-    }
-
-    /* Alignement spécifique pour mobile */
-    #dashboard div:first-child {
-        align-items: flex-start; /* "Temps" à gauche sur mobile */
-        width: 100%; /* Prendre toute la largeur */
-        text-align: left; /* Alignement à gauche du texte */
-    }
-
-    #dashboard div:nth-child(2) {
-        align-items: flex-end; /* "Tours" à droite sur mobile */
-        width: 100%; /* Prendre toute la largeur */
-        text-align: right; /* Alignement à droite du texte */
+        flex-direction: row; /* Garde les éléments côte à côte */
+        align-items: flex-start;
+        justify-content: space-between;
     }
 
     #timer, #lap-count {
-        font-size: 0.9rem; /* Réduire la taille du chrono et du nombre de tours */
+        margin-bottom: 0; /* Retirer l'espacement vertical */
     }
 
-    #dashboard div {
-        font-size: 1rem; /* Taille de la police réduite pour les petits écrans */
-        margin-bottom: 10px; /* Espacement entre "Temps" et "Tours" */
+    #timer span, #lap-count span {
+        font-size: 1.2rem; /* Réduit la taille du texte pour les petits écrans */
     }
 }
-
-

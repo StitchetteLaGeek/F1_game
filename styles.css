@@ -131,10 +131,3 @@ nav ul li a:hover {
         max-width: 100%; /* Prend toute la largeur disponible sur très petits écrans */
     }}
 
-
-
-
-#timer, #lap-count {
-    font-size: 1.5rem;
-    font-weight: bold;
-};
