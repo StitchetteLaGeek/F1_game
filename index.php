@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['pseudo'])){
+    $_SESSION['connected'] = false;
+    echo "<p id = 'connexion'><a href= 'login.html' > Connexion </a> / <a href= 'register.html'> Inscription </a></p>";
+}
+else {
+    $_SESSION['connected'] = true;
+    echo "<p id = 'connexion'> " . $_SESSION['pseudo'] . " <a href = 'logout.php'> Déconnexion </a></p> ";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,6 +56,6 @@
         </div>
     </div>
 
-    <a href="login.html">Se connecter / S'inscrire</a>
+    <!-- <a href="login.html">Se connecter / S'inscrire</a> -->
 </body>
 </html>
