@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $mdp = htmlspecialchars($_POST['password']);
 
-    if (!email){
+    if (!$email){
         echo "<p>Rentre un mail chacal !</p>";
         exit;
     }
@@ -28,7 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try{
         $stmt = $login->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
-        if ($stmt->rowCount() <= 0) echo "<p> Email introuvable chef t pas co </p>";
+        if ($stmt->rowCount() <= 0){
+            echo "<p> Email introuvable chef t pas co </p>";
+            exit;
+        }
         else {
             $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($mdp, $user_data['password'])){
@@ -37,11 +40,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: index.php");
                 exit;
             }
-            else echo "<p> mot de passse incorrect arrête de hacker !!! </p>";
+            else {
+                echo "<p> mot de passse incorrect arrête de hacker !!! </p>";
+                exit;
+            }
         }
     }
     catch (PDOException $e){
         echo "<p> Probleme chef : " . $e->getMessage() . "</p>";
+        exit;
     }
 }
 ?>
