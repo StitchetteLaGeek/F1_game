@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailexist = $login->prepare("SELECT email FROM users WHERE email = ?");
         $emailexist->execute([$email]);
 
-        if ($emailexist->rowCount() > 0) echo "<p>Erreur : t'as déjà un compte chef</p>";
+        if ($emailexist->rowCount() > 0) echo "<p>Erreur : cet Email est déjà associé à un compte</p>";
 
         else {
             $stmt = $login->prepare("INSERT INTO users (pseudo, email, password, ecurie) VALUES (?, ?, ?, ?)");
@@ -30,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: connection.html");
                 exit;
             }
-            else echo "<p>Erreur de merde lors de l'inscription</p>";
+            else echo "<p>Erreur lors de l'inscription</p>";
         }
     }
     catch (PDOException $e) {
-        die("<p>Problème de co : " . $e->getMessage() . "</p>";
+        die("<p>Problème de connexion : " . $e->getMessage() . "</p>";
     }
 }
 ?>
