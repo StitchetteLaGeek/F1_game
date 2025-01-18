@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $mdp = htmlspecialchars($_POST['password']);
@@ -31,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         else {
             $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($mdp, $user_data['password'])){
+                $_SESSION['connexion'] = true;
+                $_SESSION['pseudo'] = $user_data['pseudo'];
                 header("Location: index.php");
                 exit;
             }
