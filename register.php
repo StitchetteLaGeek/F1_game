@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $login->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e){
-        die("<p>Problème de co chef : " . $e->getMessage() . "</p>");
+        die("<p>Problème de connexion : " . $e->getMessage() . "</p>");
     }
     try{
         $emailexist = $login->prepare("SELECT email FROM users WHERE email = ?");
