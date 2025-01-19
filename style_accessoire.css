@@ -1,0 +1,61 @@
+/* style fleche telephone */
+
+#arrow-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    position: absolute;
+    top: 810px; /* Modifier la position des flèches */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    gap: 10px;
+}
+
+/* Style des boutons flèches */
+#arrow-buttons button {
+    font-size: 2rem;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Rendre les flèches visibles uniquement sur mobile */
+@media (max-width: 768px) {
+    #arrow-buttons {
+        visibility: visible;
+    }
+}
+
+/* Effet d'activation de la touche (pression sur la flèche) */
+.arrow-button:active {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Positionnement des flèches comme un clavier */
+.arrow-up {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.arrow-left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.arrow-right {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.arrow-down {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+/* Ajouter une bordure autour des boutons pour simuler un clavier */
+.arrow-button {
+    border: 2px solid #333;
+}
