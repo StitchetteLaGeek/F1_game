@@ -6,11 +6,13 @@ if (isset($_COOKIE['pseudo']) && isset($_COOKIE['email'])){
 }
 if (!isset($_SESSION['pseudo'])){
     $_SESSION['connected'] = false;
-    echo "<p id = 'login'><a href= 'login.html' > Connexion </a> / <a href= 'register.html'> Inscription </a></p>";
+    $bouton1 = ['login.php', 'connexion'];
+    $bouton2 = ['register.php', 'inscription'];
 }
 else {
     $_SESSION['connected'] = true;
-    echo "<p id = 'login'> " . htmlspecialchars($_SESSION['pseudo']) . " <a href = 'logout.php'> Déconnexion </a></p> ";
+    $bouton1 = ['index.php', $_SESSION['pseudo']];
+    $bouton2 = ['logout.php', 'déconnexion'];
 }
 ?>
 
@@ -32,10 +34,10 @@ else {
     <!-- Menu de navigation -->
     <nav>
         <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="connexion.html">Connexion</a></li>
-            <li><a href="inscription.html">S'inscrire</a></li>
-            <li><a href="profil.html">Profil</a></li>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href=<?php echo $bouton1[0]; ?>><?php echo $bouton1[1]; ?></a></li>
+            <li><a href=<?php echo $bouton2[0]; ?>><?php echo $bouton2[1]; ?></a></li>
+            <li><a href="profil.php">Profil</a></li>
         </ul>
     </nav>
 
