@@ -133,3 +133,300 @@ nav ul li a:hover {
         max-width: 100%; /* Prend toute la largeur disponible sur très petits écrans */
     }}
 
+/* === Section Connexion / Inscription === */
+#connexion-inscription {
+    background: linear-gradient(to bottom, #e10600, #1e1e1e);
+    padding: 30px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    width: 60%;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#connexion-inscription h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fff;
+}
+
+#connexion-inscription form {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+}
+
+#connexion-inscription input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+}
+
+#connexion-inscription button {
+    background: #fff;
+    color: #e10600;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#connexion-inscription button:hover {
+    background: #e10600;
+    color: #fff;
+}
+
+/* === Choix du circuit (Menu déroulant) === */
+#circuit-selection {
+    background: linear-gradient(to bottom, #e10600, #1e1e1e);
+    padding: 20px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    width: 60%;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#circuit-selection h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#circuit-select {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+/* === Écran de sélection de véhicule === */
+#vehicle-selection {
+    background: linear-gradient(to bottom, #e10600, #1e1e1e);
+    padding: 30px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    width: 60%;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#vehicle-selection h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fff;
+}
+
+#vehicle-image {
+    border: 5px solid #fff;
+    border-radius: 5px;
+    background: #ccc;
+    width: 300px;
+    height: 150px;
+    object-fit: contain;
+}
+
+#vehicle-selection button {
+    background: #fff;
+    color: #e10600;
+    border: none;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#vehicle-selection button:hover {
+    background: #e10600;
+    color: #fff;
+}
+
+/* === Écran de jeu === */
+#game-screen {
+    display: none;
+    margin-top: 20px;
+}
+
+#game-canvas {
+    border: 5px solid #000;
+    background: #ccc;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* === Tableau de bord === */
+#dashboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border-top: 5px solid #e10600;
+    margin-top: 20px;
+}
+
+#dashboard div {
+    text-align: center;
+}
+
+#timer, #lap-count {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+/* === Styles pour la page de connexion === */
+#connexion {
+    background: linear-gradient(to bottom, #e10600, #1e1e1e);
+    padding: 30px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    width: 60%;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#connexion h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fff;
+}
+
+#connexion form {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+}
+
+#connexion input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+}
+
+#connexion button {
+    background: #fff;
+    color: #e10600;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#connexion button:hover {
+    background: #e10600;
+    color: #fff;
+}
+
+#connexion p {
+    color: #fff;
+    margin-top: 20px;
+}
+
+#connexion a {
+    color: #e10600;
+    text-decoration: none;
+}
+
+#connexion a:hover {
+    text-decoration: underline;
+}
+
+/* === Styles pour la page d'inscription === */
+#inscription {
+    background: linear-gradient(to bottom, #e10600, #1e1e1e);
+    padding: 30px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    width: 60%;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#inscription h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fff;
+}
+
+#inscription form {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+}
+
+#inscription input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+}
+
+#inscription button {
+    background: #fff;
+    color: #e10600;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#inscription button:hover {
+    background: #e10600;
+    color: #fff;
+}
+
+#inscription p {
+    color: #fff;
+    margin-top: 20px;
+}
+
+#inscription a {
+    color: #e10600;
+    text-decoration: none;
+}
+
+#inscription a:hover {
+    text-decoration: underline;
+}
+
+#login {
+    text-align: center;
+    color: blue;
+}
+
+#error {
+    color: red;
+    font-sized: 10px:
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
