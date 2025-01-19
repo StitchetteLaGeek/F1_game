@@ -11,6 +11,12 @@ session_start();
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="form_register.html">S'inscrire</a></li>
+        </ul>
+    </nav>
     <div id="connexion">
         <h2>Connexion</h2>
         <form action="login.php" method="POST">
