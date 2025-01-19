@@ -15,13 +15,25 @@ session_start();
         <h2>Inscription</h2>
         <form action="register.php" method="POST">
             <label for="pseudo">Pseudo:</label>
-            <input type="text" id="pseudo" name="pseudo" required><br>
+            <input type="text" id="pseudo" name="pseudo" required>
+            <?php
+                if (isset($_SESSION['error']['pseudo'])) echo "<p id = 'error'>" . htmlspecialchars($_SESSION['error']['pseudo']) . "</p>";
+            ?>
+            <br>
         
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="email" required>
+            <?php
+                if (isset($_SESSION['error']['email'])) echo "<p id = 'error'>" . htmlspecialchars($_SESSION['error']['email']) . "</p>";
+            ?>
+            <br>
         
             <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required><br>
+            <input type="password" id="password" name="password" required>
+            <?php
+                if (isset($_SESSION['error']['mdp'])) echo "<p id = 'error'>" . htmlspecialchars($_SESSION['error']['mdp']) . "</p>";
+            ?>
+            <br>
         
             <label for="ecurie">Écurie F1 favorite:</label>
             <input type="text" id="ecurie" name="ecurie"><br>
@@ -29,6 +41,11 @@ session_start();
             <button type="submit">S'inscrire</button>
         </form>
         
+        <?php
+            if (isset($_SESSION['error']['general'])) echo "<p id = 'error'>" . htmlspecialchars($_SESSION['error']['general']) . "</p>";
+            unset($_SESSION['error']);
+        ?>
+
         <p>Déjà inscrit ? <a href="connexion.html">Se connecter ici</a></p>
         <p>Retour à <a href="index.html">la page d'accueil</a></p>
     </div>
