@@ -17,14 +17,14 @@ session_start();
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             <?php
-                if (!empty($error['email'])) echo "<p id = 'error'>" . $error['email'] . "</p>";
+                if (isset($_SESSION['error']['email'])) echo "<p id = 'error'>" . htmlspecialchars($_SESSION['error']['email']) . "</p>";
             ?>
             <br>
         
             <label for="password">Mot de passe:</label>
             <input type="password" id="password" name="password" required>
             <?php
-                if (!empty($error['mdp'])) echo "<p id = 'error'>" . $error['mdp'] . "</p>";
+                if (isset($_SESSION['error']['mdp'])) echo "<p id = 'error'>" . htmlspecialchars($_SESSION['error']['mdp']) . "</p>";
             ?>
             <br>
             <label> 
@@ -34,10 +34,11 @@ session_start();
         </form>
 
         <?php
-            if (!empty($error['general'])) echo "<p id = 'error'>" . $error['general'] . "</p>";
+            if (isset($_SESSION['error']['general'])) echo "<p id = 'error'>" . htmlspecialchars($_SESSION['error']['general']) . "</p>";
+            unset($_SESSION['error']);
         ?>
 
-        <p>Pas encore inscrit ? <a href="register.html">S'inscrire ici</a></p>
+        <p>Pas encore inscrit ? <a href="register.php">S'inscrire ici</a></p>
         <p>Retour à <a href="index.html">la page d'accueil</a></p>
     </div>
 </body>
