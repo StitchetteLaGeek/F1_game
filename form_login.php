@@ -19,7 +19,9 @@ session_start();
         
             <label for="password">Mot de passe:</label>
             <input type="password" id="password" name="password" required><br>
-        
+            <label> 
+                <input type="checkbox" name="remember"> Se souvenir de moi
+            </label><br>
             <button type="submit">Se connecter</button>
         </form>
 
