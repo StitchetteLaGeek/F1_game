@@ -303,3 +303,12 @@ h1 {
     text-align: center;
     color: blue;
 }
+
+#error {
+    color: red;
+    font-sized: 10px:
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+    
