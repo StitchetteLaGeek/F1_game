@@ -3,14 +3,13 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $mdp = htmlspecialchars($_POST['password']);
+    $remember = isset($_POST['remember']);
 
     if (!$email){
-        echo "<p>Veuillez rentrer un adresse mail.</p>";
-        exit;
+        $error['email'] = "Veuillez rentrer un adresse mail.";
     }
     if (empty($mdp)){
-        echo "<p>Veuillez rentrer un mot de passe.</p>";
-        exit;
+        $error['mdp'] = "Veuillez rentrer un mot de passe.";
     }
         
     $host = 'localhost';
@@ -29,28 +28,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $login->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         if ($stmt->rowCount() <= 0){
-            echo "<p> Email introuvable.</p>";
-            exit;
+            $error['email'] = "Email introuvable.";
         }
         else {
             $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($mdp, $user_data['password'])){
-                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['pseudo'] = $user_data['pseudo'];
                 $_SESSION['connexion'] = true;
-                setcookie("pseudo", $pseudo, time() + (86400 * 30), "/");
-                setcookie("email", $email, time() + (86400 * 30), "/");
+                if ($remember){
+                    setcookie("pseudo", $user_data['pseudo'], time() + (86400 * 30), "/", "", true, true);
+                    setcookie("email", $email, time() + (86400 * 30), "/", "", true, true);
+                }
                 header("Location: index.php");
                 exit;
             }
             else {
-                echo "<p> Mot de passse incorrect.</p>";
-                exit;
+                $error['mdp'] = "Mot de passse incorrect.";
             }
         }
     }
     catch (PDOException $e){
-        echo "<p> Problème de connnexion : " . $e->getMessage() . "</p>";
-        exit;
+        $error['general'] = "Problème de connnexion : " . $e->getMessage();
     }
 }
 ?>
