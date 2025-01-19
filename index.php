@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['pseudo'])){
     $_SESSION['connected'] = false;
-    echo "<p id = 'connexion'><a href= 'login.html' > Connexion </a> / <a href= 'register.html'> Inscription </a></p>";
+    echo "<p id = 'login'><a href= 'login.html' > Connexion </a> / <a href= 'register.html'> Inscription </a></p>";
 }
 else {
     $_SESSION['connected'] = true;
