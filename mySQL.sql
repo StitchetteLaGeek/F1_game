@@ -1,8 +1,9 @@
+-- creation mysql
 -- Création de la base de données
 CREATE DATABASE IF NOT EXISTS course_game;
 USE course_game;
 
--- Création de la table des utilisateurs
+-- Création de la table des utilisateurs 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pseudo VARCHAR(50) NOT NULL,

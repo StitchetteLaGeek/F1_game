@@ -1,3 +1,5 @@
+// action du jeu
+
 const isMobile = window.innerWidth <= 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 // Variables globales

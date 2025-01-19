@@ -3,7 +3,7 @@ $host = 'localhost';
 $dbname = 'e2202522';
 $user = 'e2202522';
 $password = 'TON_MOT_DE_PASSE';
-
+ // formulaire 
 try {
     // Connexion à la base de données
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
