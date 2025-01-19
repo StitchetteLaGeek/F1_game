@@ -5,11 +5,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp = htmlspecialchars($_POST['password']);
     $remember = isset($_POST['remember']);
 
-    if (!$email){
-        $error['email'] = "Veuillez rentrer un adresse mail.";
-    }
-    if (empty($mdp)){
-        $error['mdp'] = "Veuillez rentrer un mot de passe.";
+    if (!$email) $_SESSION['error']['email'] = "Veuillez rentrer un adresse mail.";
+    
+    if (empty($mdp)) $_SESSION['error']['mdp'] = "Veuillez rentrer un mot de passe.";
+
+    if (empty($_SESSION['error'])){
+        header("Location: login.php");
+        exit;
     }
         
     $host = 'localhost';
@@ -28,7 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $login->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         if ($stmt->rowCount() <= 0){
-            $error['email'] = "Email introuvable.";
+            $_SESSION['error']['email'] = "Email introuvable.";
+            header("Location: login.php");
+            exit;
         }
         else {
             $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -43,12 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit;
             }
             else {
-                $error['mdp'] = "Mot de passse incorrect.";
+                $_SESSION['error']['mdp'] = "Mot de passse incorrect.";
+                header("Location: login.php");
+                exit;
             }
         }
     }
     catch (PDOException $e){
-        $error['general'] = "Problème de connnexion : " . $e->getMessage();
+        $_SESSION['error']['general'] = "Problème de connnexion : " . $e->getMessage();
+        header("Location: login.php");
+        exit;
     }
 }
 ?>
