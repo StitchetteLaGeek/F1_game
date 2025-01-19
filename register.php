@@ -1,4 +1,4 @@
-o<?php
+<?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -6,16 +6,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp = $_POST['password'];
     $ecurie = htmlspecialchars($_POST['ecurie']);
 
+    $_SESSION['error'] = [];
+
     $host = 'localhost';
-    $dbname = 'e2202522';
-    $user = 'e2202522';
-    $password = 'metcquetuveux';
+    $dbname = 'course_game';
+    $user = 'root';
+    $password = '';
 
     if (empty($pseudo)) $_SESSION['error']['pseudo'] = "Veuillez renseigner un pseudo.";
     if (!$email) $_SESSION['error']['email'] = "Veuillez fournir une adresse email valide.";
     if (empty($mdp)) $_SESSION['error']['mdp'] = "Veuillez renseigner un mot de passe.";
-    if (empty($_SESSION['error'])){
-        header("Location: register.php");
+
+    if (!empty($_SESSION['error'])){
+        header("Location: form_register.php");
         exit;
     }
     $mdp = password_hash($mdp, PASSWORD_DEFAULT);
@@ -25,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     catch (PDOException $e){
         $_SESSION['error']['general'] = "Erreur lors de l'inscription.";
-        header("Location: register.php");
+        header("Location: form_register.php");
         exit;
     }
     try{
@@ -34,26 +37,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($emailexist->rowCount() > 0){
             $_SESSION['error']['email'] = "Erreur : cet Email est déjà associé à un compte.";
-            header("Location: register.php");
+            header("Location: form_register.php");
             exit;
         }
 
         else {
             $stmt = $login->prepare("INSERT INTO users (pseudo, email, password, ecurie) VALUES (?, ?, ?, ?)");
             if ($stmt->execute([$pseudo, $email, $mdp, $ecurie])){
-                header("Location: login.php");
+                header("Location: form_login.php");
                 exit;
             }
             else {
                 $_SESSION['error']['general'] = "Erreur lors de l'inscription";
-                header("Location: register.php");
+                header("Location: form_register.php");
                 exit;
             }
         }
     }
     catch (PDOException $e) {
         $_SESSION['error']['general'] = "Erreur lors de l'inscription.";
-        header("Location: register.php");
+        header("Location: form_register.php");
         exit;
     }
 }

@@ -6,13 +6,13 @@ if (isset($_COOKIE['pseudo']) && isset($_COOKIE['email'])){
 }
 if (!isset($_SESSION['pseudo'])){
     $_SESSION['connected'] = false;
-    $bouton1 = ['form_login.php', 'connexion'];
+    $bouton1 = ['form_login.php', 'Connexion'];
     $bouton2 = ['form_register.php', 'inscription'];
 }
 else {
     $_SESSION['connected'] = true;
     $bouton1 = ['index.php', $_SESSION['pseudo']];
-    $bouton2 = ['logout.php', 'déconnexion'];
+    $bouton2 = ['logout.php', 'Déconnexion'];
 }
 ?>
 
@@ -37,7 +37,6 @@ else {
             <li><a href="index.php">Accueil</a></li>
             <li><a href=<?php echo $bouton1[0]; ?>><?php echo $bouton1[1]; ?></a></li>
             <li><a href=<?php echo $bouton2[0]; ?>><?php echo $bouton2[1]; ?></a></li>
-            <li><a href="profil.php">Profil</a></li>
         </ul>
     </nav>
 

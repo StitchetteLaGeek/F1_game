@@ -34,7 +34,7 @@ session_start();
             ?>
             <br>
             <label> 
-                <input type="checkbox" name="remember"> Se souvenir de moi
+                <input type="checkbox" id = remember name="remember"> Se souvenir de moi
             </label><br>
             <button type="submit">Se connecter</button>
         </form>
