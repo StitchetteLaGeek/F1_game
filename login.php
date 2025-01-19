@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (empty($mdp)) $_SESSION['error']['mdp'] = "Veuillez rentrer un mot de passe.";
 
-    if (empty($_SESSION['error'])){
+    if (!empty($_SESSION['error'])){
         header("Location: login.php");
         exit;
     }
