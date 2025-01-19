@@ -1,12 +1,17 @@
 <?php
 session_start();
+if (isset($_COOKIE['pseudo']) && isset($_COOKIE['email'])){
+    $_SESSION['pseudo'] = $_COOKIE['pseudo'];
+    $_SESSION['email'] = $_COOKIE['email'];
+}
+    
 if (!isset($_SESSION['pseudo'])){
     $_SESSION['connected'] = false;
     echo "<p id = 'login'><a href= 'login.html' > Connexion </a> / <a href= 'register.html'> Inscription </a></p>";
 }
 else {
     $_SESSION['connected'] = true;
-    echo "<p id = 'login'> " . $_SESSION['pseudo'] . " <a href = 'logout.php'> Déconnexion </a></p> ";
+    echo "<p id = 'login'> " . htmlspecialchars($_SESSION['pseudo']) . " <a href = 'logout.php'> Déconnexion </a></p> ";
 }
 ?>
 
