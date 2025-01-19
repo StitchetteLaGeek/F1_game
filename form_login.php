@@ -44,8 +44,8 @@ session_start();
             unset($_SESSION['error']);
         ?>
 
-        <p>Pas encore inscrit ? <a href="register.php">S'inscrire ici</a></p>
-        <p>Retour à <a href="index.html">la page d'accueil</a></p>
+        <p>Pas encore inscrit ? <a href="form_register.php">S'inscrire ici</a></p>
+        <p>Retour à <a href="index.php">la page d'accueil</a></p>
     </div>
 </body>
 </html>
