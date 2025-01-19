@@ -11,6 +11,12 @@ session_start();
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="form_login.php">Se connecter</a></li>
+        </ul>
+    </nav>
     <div id="inscription">
         <h2>Inscription</h2>
         <form action="register.php" method="POST">
@@ -46,8 +52,8 @@ session_start();
             unset($_SESSION['error']);
         ?>
 
-        <p>Déjà inscrit ? <a href="connexion.html">Se connecter ici</a></p>
-        <p>Retour à <a href="index.html">la page d'accueil</a></p>
+        <p>Déjà inscrit ? <a href="form_login.php">Se connecter ici</a></p>
+        <p>Retour à <a href="index.php">la page d'accueil</a></p>
     </div>
 </body>
 </html>
