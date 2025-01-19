@@ -298,3 +298,8 @@ h1 {
 #inscription a:hover {
     text-decoration: underline;
 }
+
+#login {
+    text-align: center;
+    color: blue;
+}
