@@ -245,11 +245,3 @@ h1 {
         font-size: 1.2rem; /* Réduit la taille du texte pour les petits écrans */
     }
 }
-#error {
-    color: red;
-    font-weight: bold;
-}
-.success {
-    color: green;
-    font-weight: bold;
-}
