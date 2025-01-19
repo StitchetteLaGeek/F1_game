@@ -6,8 +6,8 @@ if (isset($_COOKIE['pseudo']) && isset($_COOKIE['email'])){
 }
 if (!isset($_SESSION['pseudo'])){
     $_SESSION['connected'] = false;
-    $bouton1 = ['login.php', 'connexion'];
-    $bouton2 = ['register.php', 'inscription'];
+    $bouton1 = ['form_login.php', 'connexion'];
+    $bouton2 = ['form_register.php', 'inscription'];
 }
 else {
     $_SESSION['connected'] = true;
