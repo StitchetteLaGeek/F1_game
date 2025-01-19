@@ -1,15 +1,15 @@
-<?php
+ll<?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $mdp = htmlspecialchars($_POST['password']);
 
     if (!$email){
-        echo "<p>Rentrez un adresse mail.</p>";
+        echo "<p>Veuillez rentrer un adresse mail.</p>";
         exit;
     }
     if (empty($mdp)){
-        echo "<p>Rentrez un mot de passe</p>";
+        echo "<p>Veuillez rentrer un mot de passe.</p>";
         exit;
     }
         
@@ -35,8 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         else {
             $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($mdp, $user_data['password'])){
+                $_SESSION['pseudo'] = $pseudo;
                 $_SESSION['connexion'] = true;
-                $_SESSION['pseudo'] = $user_data['pseudo'];
+                setcookie("pseudo", $pseudo, time() + (86400 * 30), "/");
+                setcookie("email", $email, time() + (86400 * 30), "/");
                 header("Location: index.php");
                 exit;
             }
