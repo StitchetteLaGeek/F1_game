@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Requête d'insertion dans la base de données
-            $sql_insert = "INSERT INTO users (pseudo, email, password, ecurie) 
-                           VALUES (?, ?, ?, ?)";
+            $sql_insert = "INSERT INTO users (id, pseudo, email, password, ecurie) 
+                           VALUES (NULL, ?, ?, ?, ?)";
             $stmt_insert = $conn->prepare($sql_insert);
 
             if ($stmt_insert === false) {

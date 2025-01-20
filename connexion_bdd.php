@@ -2,8 +2,8 @@
 // Connexion à la base de données avec WAMP
 $host = 'localhost';
 $dbname = 'e2202522'; // Remplace par ton nom de base de données
-$username = 'root'; // Nom d'utilisateur MySQL, généralement "root" sous WAMP
-$password = ''; // Le mot de passe est généralement vide sous WAMP
+$username = 'e2202522'; // Nom d'utilisateur MySQL, généralement "root" sous WAMP
+$password = 'Gsf346yp'; // Le mot de passe est généralement vide sous WAMP
 
 // Connexion à MySQL via PDO
 try {
