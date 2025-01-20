@@ -26,7 +26,7 @@ let gameInterval;
 // Liste des checkpoints
 let checkpoints = {
     monaco: [{x: 200, y: 195, validated: false}, {x: 600, y: 150, validated: false}, {x: 600, y: 520, validated: false}],
-    hockenheim: [{x: 100, y: 200, validated: false}, {x: 500, y: 350, validated: false}],
+    hockenheim: [{x: 50, y: 200, validated: false}, {x: 500, y: 370, validated: false}],
     shanghai: [{x: 300, y: 100, validated: false}, {x: 500, y: 540, validated: false}],
     nuerburgring: [{x: 250, y: 362, validated: false}, {x: 420, y: 190, validated: false}],
 };
@@ -138,14 +138,14 @@ function initArrowControl() {
 // Paramètres des lignes de départ et des positions de départ pour chaque circuit
 const startLines = {
     monaco: {x: 351, y: 301, width: 5, height: 40},
-    hockenheim: {x: 351, y: 301, width: 5, height: 40},
+    hockenheim: {x: 351, y: 520, width: 5, height: 40},
     shanghai: {x: 301, y: 550, width: 5, height: 40},
     nuerburgring: {x: 600, y: 420, width: 5, height: 40}
 };
 
 const startPositions = {
     monaco: {x: 350, y: 300},
-    hockenheim: {x: 100, y: 300},
+    hockenheim: {x: 351, y: 520},
     shanghai: {x: 301, y: 550},
     nuerburgring: {x: 600, y: 420}
 };
@@ -199,17 +199,17 @@ function updateTrackImage() {
         currentStartPosition = startPositions.hockenheim;
         currentCheckpoints = checkpoints.hockenheim;
     } else if (circuit.toLowerCase() === 'monaco') {
-        trackImage.src = 'images/monaco.png';
+        trackImage.src = 'images/Monaco.png';
         currentStartLine = startLines.monaco;
         currentStartPosition = startPositions.monaco;
         currentCheckpoints = checkpoints.monaco;
     } else if (circuit.toLowerCase() === 'shanghai') {
-        trackImage.src = 'images/shanghai.png';
+        trackImage.src = 'images/Shanghai.png';
         currentStartLine = startLines.shanghai;
         currentStartPosition = startPositions.shanghai;
         currentCheckpoints = checkpoints.shanghai;
     } else if (circuit.toLowerCase() === 'nuerburgring') {
-        trackImage.src = 'images/nuerburgring.png';
+        trackImage.src = 'images/Nuerburgring.png';
         currentStartLine = startLines.nuerburgring;
         currentStartPosition = startPositions.nuerburgring;
         currentCheckpoints = checkpoints.nuerburgring;
